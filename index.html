@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Renewable Energy Revolution: A Narrative Visualization</title>
+    <title>S&P 500: Market Events & Their Impact</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/d3-annotation.v2.min.js"></script>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
-            overflow-x: hidden;
+            min-height: 100vh;
         }
 
         .container {
@@ -22,18 +28,18 @@
 
         .header {
             text-align: center;
-            color: white;
             margin-bottom: 30px;
+            color: white;
         }
 
         .header h1 {
-            font-size: 2.5em;
+            font-size: 2.5rem;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .header p {
-            font-size: 1.2em;
+            font-size: 1.2rem;
             opacity: 0.9;
         }
 
@@ -41,37 +47,31 @@
             background: white;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            margin-bottom: 30px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        .scene-container:hover {
-            transform: translateY(-5px);
-        }
-
-        .scene-header {
-            background: linear-gradient(90deg, #4CAF50, #45a049);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .scene-header h2 {
-            margin: 0;
-            font-size: 1.8em;
-        }
-
-        .scene-content {
             padding: 30px;
-            min-height: 500px;
+            margin-bottom: 30px;
+            min-height: 600px;
+        }
+
+        .scene-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .scene-description {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+            text-align: center;
+            line-height: 1.6;
         }
 
         .chart-container {
-            width: 100%;
-            height: 400px;
-            margin: 20px 0;
             position: relative;
+            margin: 20px 0;
         }
 
         .navigation {
@@ -81,146 +81,146 @@
             margin: 30px 0;
         }
 
-        .nav-button {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
+        .nav-btn {
+            padding: 12px 24px;
+            font-size: 1rem;
             border: none;
-            padding: 12px 25px;
             border-radius: 25px;
             cursor: pointer;
-            font-size: 1em;
-            font-weight: bold;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-weight: 600;
         }
 
-        .nav-button:hover {
+        .nav-btn.primary {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .nav-btn.secondary {
+            background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+            color: white;
+        }
+
+        .nav-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .nav-button:disabled {
+        .nav-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
         }
 
-        .annotation {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid #4CAF50;
-            border-radius: 8px;
-            padding: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            max-width: 250px;
-            z-index: 1000;
-            font-size: 0.9em;
-            line-height: 1.4;
-        }
-
-        .annotation::before {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-bottom: 8px solid #4CAF50;
-            top: -10px;
-            left: 20px;
-        }
-
         .progress-bar {
             width: 100%;
-            height: 6px;
-            background: #e0e0e0;
-            border-radius: 3px;
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
             margin: 20px 0;
             overflow: hidden;
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #4CAF50, #45a049);
-            width: 0%;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
             transition: width 0.5s ease;
-        }
-
-        .scene-description {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.1em;
-            line-height: 1.6;
-            color: #666;
+            border-radius: 4px;
         }
 
         .tooltip {
             position: absolute;
             background: rgba(0, 0, 0, 0.8);
             color: white;
-            padding: 8px 12px;
-            border-radius: 6px;
+            padding: 10px;
+            border-radius: 5px;
             font-size: 12px;
             pointer-events: none;
-            z-index: 1000;
             opacity: 0;
             transition: opacity 0.3s;
         }
 
-        .axis-label {
+        .annotation {
             font-size: 14px;
-            font-weight: bold;
-            fill: #666;
+            font-weight: 600;
         }
 
-        .tick text {
-            font-size: 12px;
-            fill: #666;
+        .scene-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
         }
 
-        .grid line {
-            stroke: #e0e0e0;
-            stroke-width: 1;
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #bdc3c7;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .grid path {
-            stroke-width: 0;
+        .indicator.active {
+            background: #3498db;
+            transform: scale(1.2);
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🌍 Global Renewable Energy Revolution</h1>
-            <p>A Journey Through the Clean Energy Transformation</p>
+            <h1>S&P 500: Market Events & Their Impact</h1>
+            <p>Exploring how major economic events shaped the world's most important stock index</p>
         </div>
 
         <div class="progress-bar">
             <div class="progress-fill" id="progressFill"></div>
         </div>
 
-        <div class="navigation">
-            <button class="nav-button" id="prevBtn" onclick="previousScene()">← Previous</button>
-            <button class="nav-button" id="nextBtn" onclick="nextScene()">Next →</button>
+        <div class="scene-indicator">
+            <div class="indicator active" data-scene="0"></div>
+            <div class="indicator" data-scene="1"></div>
+            <div class="indicator" data-scene="2"></div>
         </div>
 
-        <div class="scene-container">
-            <div class="scene-header">
-                <h2 id="sceneTitle">Scene 1: The Global Picture</h2>
-            </div>
-            <div class="scene-content">
-                <div class="scene-description" id="sceneDescription">
-                    Explore the worldwide adoption of renewable energy sources and their impact on our planet's future.
-                </div>
-                <div class="chart-container" id="chartContainer">
-                    <!-- D3 visualization will be rendered here -->
-                </div>
-            </div>
+        <div class="scene-container" id="sceneContainer">
+            <!-- Scene content will be dynamically populated -->
+        </div>
+
+        <div class="navigation">
+            <button class="nav-btn secondary" id="prevBtn">← Previous</button>
+            <button class="nav-btn primary" id="nextBtn">Next →</button>
         </div>
     </div>
 
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="https://unpkg.com/d3-annotation@2.5.1/build/d3-annotation.min.js"></script>
-    <script src="narrative.js"></script>
+    <div class="tooltip" id="tooltip"></div>
+
+    <script src="script.js"></script>
 </body>
 </html> 

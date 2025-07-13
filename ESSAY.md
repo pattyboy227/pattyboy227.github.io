@@ -1,164 +1,64 @@
-# Narrative Visualization Essay: Global Renewable Energy Revolution
+# Narrative Visualization Essay: S&P 500 Market Events
 
 ## Messaging
-
-The primary message of this narrative visualization is to communicate the global transition toward renewable energy and highlight the diverse approaches different countries take in their clean energy adoption. The story emphasizes three key themes:
-
-1. **Global Leadership**: China and the United States lead in total renewable capacity, demonstrating the scale of investment needed for meaningful climate action.
-
-2. **Technology Diversity**: Different countries prioritize different renewable technologies based on their geographical advantages and policy decisions.
-
-3. **Energy Mix Strategy**: Successful renewable energy adoption requires balancing multiple energy sources rather than relying on a single technology.
-
-The visualization aims to inspire viewers by showing that renewable energy is not just a theoretical concept but a reality being implemented at scale across the globe, with each country contributing to the solution in their own way.
+The primary message of this narrative visualization is to demonstrate how major economic events have profoundly impacted the S&P 500 index, showing that while markets are resilient, they are not immune to significant disruptions. The visualization communicates that each crisis had unique characteristics - the dot-com bubble was a speculative mania, the 2008 crisis was a systemic banking failure, and COVID-19 was an unprecedented external shock. Despite these different origins, all three events caused significant market volatility and required time for recovery, highlighting the cyclical nature of markets and the importance of understanding historical patterns.
 
 ## Narrative Structure
-
-This narrative visualization follows the **martini glass structure**. The martini glass structure delivers the message through a directed narrative before allowing user exploration. Here's how this structure is implemented:
-
-1. **Directed Story Phase**: Users are guided through three sequential scenes that build upon each other:
-   - Scene 1 establishes the global context and identifies leaders
-   - Scene 2 compares specific technologies (solar vs wind)
-   - Scene 3 reveals the complexity of energy mix decisions
-
-2. **Controlled Exploration**: Each scene allows limited interaction (tooltips, hover effects) while maintaining narrative focus through strategic annotations and highlighting.
-
-3. **Final Freedom**: After completing the narrative, users can freely explore the data through interactive elements like tooltips and hover effects, though the core story has already been delivered.
-
-The martini glass structure ensures that the key message about renewable energy adoption is communicated effectively before users potentially get lost in data exploration.
+This narrative visualization follows an **Interactive Slideshow** structure. Users can navigate between scenes in any order, allowing them to explore different market events based on their interests. Each scene focuses on a specific crisis while maintaining the same underlying chart, enabling users to compare the magnitude and duration of different market disruptions. The interactive nature allows users to drill down into specific time periods and data points through tooltips, while the guided narrative ensures they understand the key events and their impacts.
 
 ## Visual Structure
+Each scene uses a consistent visual template centered around a line chart of the S&P 500 index over time. The chart includes:
+- **Clear axes and labels** for easy data interpretation
+- **Color-coded highlight areas** showing the specific event periods
+- **Scene-specific annotations** with callouts pointing to key moments
+- **Interactive data points** with tooltips for detailed information
+- **Progress indicators** showing current position in the narrative
 
-Each scene employs a consistent visual structure that ensures clarity and engagement:
-
-**Scene Template:**
-- **Header**: Clear scene title and description
-- **Chart Area**: Central visualization with consistent dimensions (800x400px)
-- **Navigation**: Progress bar and Previous/Next buttons
-- **Annotations**: Strategic callouts highlighting key insights
-
-**Visual Consistency:**
-- **Color Scheme**: Consistent color coding (green for hydro, blue for wind, orange for solar, purple for biomass)
-- **Typography**: Unified font family and sizing hierarchy
-- **Spacing**: Consistent margins and padding throughout
-- **Animations**: Smooth transitions between scenes and chart elements
-
-**Data Understanding:**
-- **Clear Axes**: Properly labeled axes with appropriate scales
-- **Grid Lines**: Subtle grid lines aid in data reading
-- **Tooltips**: Hover interactions provide detailed information
-- **Annotations**: Strategic highlighting guides attention to key insights
-
-**Scene Transitions:**
-- **Progress Bar**: Visual indication of narrative progress
-- **Smooth Animations**: Chart elements animate in to maintain engagement
-- **Consistent Layout**: Same container structure across all scenes
+The visual structure ensures viewers can understand the data by providing clear temporal context and highlighting the most important periods. The consistent chart format allows easy comparison between different events, while the annotations guide attention to critical moments in each crisis.
 
 ## Scenes
+The visualization contains three ordered scenes:
 
-The narrative consists of three carefully ordered scenes that build a comprehensive story:
+1. **The Dot-Com Bubble (1995-2002)** - Shows the rapid rise of internet stocks followed by their dramatic collapse, highlighting the speculative nature of the bubble and its eventual burst.
 
-**Scene 1: The Global Picture**
-- **Purpose**: Establish the global context and identify renewable energy leaders
-- **Chart Type**: Bar chart showing total renewable capacity by country
-- **Key Insight**: China leads with 905 GW, followed by United States with 221 GW
-- **Order Rationale**: Provides foundation for understanding scale and leadership
+2. **The 2008 Financial Crisis** - Demonstrates the housing market collapse and banking crisis that led to the Great Recession, showing the systemic nature of the crisis and its prolonged recovery.
 
-**Scene 2: Solar vs Wind Energy**
-- **Purpose**: Compare the two dominant renewable technologies
-- **Chart Type**: Scatter plot with solar capacity on x-axis, wind on y-axis
-- **Key Insight**: China dominates both technologies, while countries like Germany show strong solar adoption
-- **Order Rationale**: Builds on global context to examine technology choices
+3. **The COVID-19 Pandemic** - Illustrates the unprecedented market volatility caused by the global pandemic, featuring the fastest crash and recovery in market history.
 
-**Scene 3: Energy Mix Diversity**
-- **Purpose**: Reveal the complexity of renewable energy portfolio decisions
-- **Chart Type**: Stacked bar chart showing breakdown by energy source
-- **Key Insight**: Brazil shows excellent energy diversity, while hydro power remains crucial globally
-- **Order Rationale**: Culminates the story by showing how countries balance multiple technologies
-
-The scene ordering follows a logical progression from macro to micro, from total capacity to specific technologies to energy mix complexity.
+The scenes are ordered chronologically to show the evolution of market crises over time, but users can navigate freely between them to compare different events.
 
 ## Annotations
+The annotation template uses d3-annotation callout circles with consistent styling:
+- **Red annotations** for the dot-com bubble scene
+- **Orange annotations** for the 2008 crisis scene  
+- **Green annotations** for the COVID-19 scene
 
-Annotations follow a consistent template designed for maximum impact:
-
-**Template Design:**
-- **Positioning**: Strategic placement near relevant data points
-- **Styling**: White background with colored borders matching the data theme
-- **Typography**: Clear, readable font with appropriate sizing
-- **Animation**: Animate in after chart elements to draw attention
-
-**Annotation Template:**
-```css
-.annotation {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.95);
-    border: 2px solid [theme-color];
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    max-width: 250px;
-    z-index: 1000;
-}
-```
-
-**Supporting the Message:**
-- **Scene 1**: Annotations highlight China and United States as global leaders
-- **Scene 2**: Annotations emphasize China's dominance and Germany's solar focus
-- **Scene 3**: Annotations showcase Brazil's diversity and hydro power importance
-
-**Timing Strategy:**
-- Annotations appear after chart animations complete (1-second delay)
-- Staggered appearance (500ms between annotations) creates narrative rhythm
-- Annotations remain visible throughout the scene to reinforce key points
+Each annotation includes a title and descriptive label, positioned to avoid overlapping with the chart data. The annotations highlight the peak and bottom of each crisis, helping users understand the magnitude of market movements. The consistent template ensures visual coherence while the color coding helps distinguish between different events.
 
 ## Parameters
+The narrative visualization uses several key parameters to control state:
 
-The narrative visualization uses several key parameters to control state and scene construction:
+- **currentScene**: Tracks which scene is currently displayed (0-2)
+- **totalScenes**: Constant defining the number of scenes (3)
+- **data**: Contains the S&P 500 dataset with date and price information
+- **chart**: References the D3 SVG element for updates
+- **annotations**: Manages the d3-annotation instance
 
-**Core Parameters:**
-- `currentScene` (0-2): Controls which scene is currently displayed
-- `highlightedCountry`: Tracks user-selected country for exploration
-- `selectedYear` (2020): Data year for consistency
-- `showAnnotations` (boolean): Controls annotation visibility
-- `animationSpeed` (1000ms): Controls transition timing
-
-**Scene-Specific Parameters:**
-- `chartType`: Determines which chart rendering function to use
-- `highlightType`: Controls which data aspects to emphasize
-- `annotations`: Array of annotation objects with positioning and content
-
-**Parameter Usage:**
-- **State Management**: Parameters define the current state of the visualization
-- **Scene Construction**: Parameters are passed to rendering functions to customize each scene
-- **User Interaction**: Parameters update based on user actions (navigation, hover, etc.)
-- **Animation Control**: Parameters determine timing and behavior of transitions
+These parameters are used in functions like `showScene()`, `updateChartForScene()`, and `addSceneAnnotations()` to control the visualization state and ensure proper scene transitions.
 
 ## Triggers
+The visualization includes several triggers that connect user actions to state changes:
 
-The narrative visualization employs multiple trigger types to connect user actions to state changes:
+- **Navigation buttons**: Previous/Next buttons trigger `showScene()` with updated scene index
+- **Scene indicators**: Click events on indicator dots trigger direct scene navigation
+- **Data point hover**: Mouse events trigger tooltip display with detailed information
+- **Progress bar**: Automatically updates based on current scene position
 
-**Navigation Triggers:**
-- **Button Clicks**: Previous/Next buttons update `currentScene` parameter
-- **Keyboard Events**: Arrow keys and spacebar trigger scene navigation
-- **Progress Bar**: Visual feedback shows current narrative position
+The triggers provide clear affordances through:
+- **Button styling** that changes based on availability (disabled state)
+- **Visual feedback** on hover with button animations
+- **Progress indicators** showing current position
+- **Active state indicators** for scene navigation
+- **Tooltip instructions** that appear on data point interaction
 
-**Interaction Triggers:**
-- **Mouse Hover**: Shows tooltips with detailed data information
-- **Mouse Out**: Hides tooltips and resets element styling
-- **Element Selection**: Highlights selected data points
-
-**Animation Triggers:**
-- **Scene Load**: Triggers chart animations and annotation appearance
-- **Parameter Changes**: Triggers visual updates based on new state
-- **Transition Completion**: Triggers subsequent animations
-
-**User Affordances:**
-- **Visual Buttons**: Clear Previous/Next buttons with hover effects
-- **Progress Indicator**: Progress bar shows narrative completion
-- **Keyboard Hints**: Arrow key functionality for power users
-- **Tooltip Indicators**: Hover effects show interactive elements
-- **Color Coding**: Consistent colors help users understand data relationships
-- **Disabled States**: Navigation buttons show when actions are unavailable
-
-The combination of these triggers creates an intuitive user experience that guides users through the narrative while providing clear feedback about available interactions and current state. 
+These triggers ensure users understand their navigation options and can easily explore the narrative at their own pace while maintaining the guided structure of the visualization. 
