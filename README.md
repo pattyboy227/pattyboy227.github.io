@@ -1,63 +1,57 @@
-# Climate Change: A Global Narrative
-
-An interactive narrative visualization exploring the impact of climate change through data storytelling.
+# S&P 500: Market Events & Their Impact
 
 ## Overview
-
-This project implements a narrative visualization following the **interactive slideshow** structure, guiding users through three key scenes that tell the story of climate change:
-
-1. **Rising Global Temperatures** - Shows temperature anomalies from 1880-2023
-2. **Carbon Emissions by Region** - Displays global CO2 emissions distribution
-3. **Renewable Energy Growth** - Demonstrates the rise of clean energy solutions
+This narrative visualization explores how three major economic events shaped the S&P 500 index over the past three decades. The project uses D3.js to create an interactive slideshow that guides users through the dot-com bubble, the 2008 financial crisis, and the COVID-19 pandemic.
 
 ## Features
 
-- **Interactive Navigation**: Smooth transitions between scenes with progress tracking
-- **Consistent Visual Design**: Unified color scheme and typography across all scenes
-- **Data-Driven Annotations**: Strategic annotations highlighting key insights
-- **Responsive Design**: Works across different screen sizes
-- **Keyboard Navigation**: Arrow keys and spacebar for navigation
-- **Interactive Tooltips**: Hover over data points for detailed information
+### Interactive Slideshow Structure
+- **Scene 1**: The Dot-Com Bubble (1995-2002) - Explores the rapid rise and dramatic fall of internet stocks
+- **Scene 2**: The 2008 Financial Crisis - Examines the housing market collapse and banking crisis
+- **Scene 3**: The COVID-19 Pandemic - Shows the unprecedented market volatility and recovery
 
-## Technical Implementation
+### Interactive Elements
+- **Navigation**: Previous/Next buttons and scene indicators
+- **Progress Bar**: Visual indication of current position in the narrative
+- **Tooltips**: Hover over data points to see detailed information
+- **Annotations**: Scene-specific callouts highlighting key events
+- **Highlighted Areas**: Color-coded regions showing event periods
 
-- **D3.js v7**: For all data visualization components
-- **Vanilla JavaScript**: For narrative logic and state management
-- **CSS3**: For styling and animations
-- **HTML5**: Semantic structure
+### Technical Implementation
+- **D3.js**: Core visualization library
+- **d3-annotation**: For callout annotations
+- **Responsive Design**: Works on desktop and mobile devices
+- **Smooth Transitions**: Animated scene transitions and progress updates
 
 ## Narrative Structure
+This visualization follows an **Interactive Slideshow** structure, allowing users to:
+- Navigate between scenes in any order
+- Explore data points through tooltips
+- Understand the progression of market events
+- Compare the impact of different crises
 
-This visualization follows the **interactive slideshow** pattern, where:
-- Users can explore data within each scene through tooltips
-- Navigation is controlled but allows for user interaction
-- Each scene builds upon the previous one to tell a complete story
-- The narrative progresses from problem identification to solution exploration
-
-## Files
-
-- `index.html` - Main HTML structure and styling
-- `narrative.js` - Core narrative logic and D3 visualizations
-- `README.md` - Project documentation
+## Data
+The visualization uses simulated S&P 500 data that incorporates realistic patterns including:
+- Long-term growth trends
+- Seasonal variations
+- Event-specific impacts (dot-com bubble, 2008 crisis, COVID-19)
+- Market volatility patterns
 
 ## Usage
+1. Navigate through scenes using the Previous/Next buttons
+2. Click on scene indicators to jump to specific scenes
+3. Hover over data points to see detailed information
+4. Observe the highlighted areas and annotations for each event
 
-1. Open `index.html` in a web browser
-2. Use the navigation buttons or keyboard arrows to move between scenes
-3. Hover over data points for additional information
-4. Follow the narrative progression to understand the climate change story
+## Files
+- `index.html`: Main HTML structure and styling
+- `script.js`: D3.js visualization logic and scene management
+- `README.md`: Project documentation
 
-## Data Sources
-
-The visualization uses synthesized data that represents realistic climate change trends:
-- Temperature data follows historical warming patterns
-- Emissions data reflects current global distribution
-- Renewable energy data shows exponential growth trends
-
-## Educational Value
-
-This narrative visualization demonstrates:
-- How to structure a compelling data story
-- Effective use of annotations and visual hierarchy
-- Interactive design principles
-- D3.js implementation best practices 
+## Requirements Met
+- ✅ Uses D3.js (no high-level tools)
+- ✅ Implements scenes, annotations, parameters, and triggers
+- ✅ Follows interactive slideshow narrative structure
+- ✅ Three distinct scenes highlighting different aspects
+- ✅ Consistent visual template across scenes
+- ✅ User interaction through navigation and tooltips 
