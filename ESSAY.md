@@ -1,64 +1,170 @@
-# Narrative Visualization Essay: S&P 500 Market Events
+# Narrative Visualization Essay: Climate Change - A Global Narrative
 
 ## Messaging
-The primary message of this narrative visualization is to demonstrate how major economic events have profoundly impacted the S&P 500 index, showing that while markets are resilient, they are not immune to significant disruptions. The visualization communicates that each crisis had unique characteristics - the dot-com bubble was a speculative mania, the 2008 crisis was a systemic banking failure, and COVID-19 was an unprecedented external shock. Despite these different origins, all three events caused significant market volatility and required time for recovery, highlighting the cyclical nature of markets and the importance of understanding historical patterns.
+
+The primary message of this narrative visualization is to communicate the urgent reality of climate change through a compelling data-driven story. The narrative aims to:
+
+1. **Establish the Problem**: Show the undeniable warming trend of global temperatures since the Industrial Revolution
+2. **Identify the Cause**: Demonstrate how different regions contribute to carbon emissions, highlighting the global nature of the issue
+3. **Present Hope**: Show the rapid growth of renewable energy as a viable solution
+
+The overarching message is that while climate change is a serious global challenge, there are concrete solutions being implemented that offer hope for the future. The narrative structure guides viewers from awareness of the problem to understanding of solutions, creating a complete and actionable story.
 
 ## Narrative Structure
-This narrative visualization follows an **Interactive Slideshow** structure. Users can navigate between scenes in any order, allowing them to explore different market events based on their interests. Each scene focuses on a specific crisis while maintaining the same underlying chart, enabling users to compare the magnitude and duration of different market disruptions. The interactive nature allows users to drill down into specific time periods and data points through tooltips, while the guided narrative ensures they understand the key events and their impacts.
+
+This narrative visualization follows the **interactive slideshow** structure. This choice was made because:
+
+- **Controlled Progression**: The story unfolds in a specific order that builds understanding progressively
+- **User Exploration**: Each scene allows interactive exploration through tooltips and hover effects
+- **Guided Discovery**: Users can explore data points within each scene while maintaining narrative flow
+- **Flexible Navigation**: Users can move forward and backward through scenes, but the narrative maintains its intended structure
+
+The interactive slideshow structure differs from a martini glass (which restricts exploration until the end) and a drill-down story (which starts with an overview and branches into multiple storylines). Instead, it provides controlled exploration at each step, allowing users to engage with the data while following a predetermined narrative arc.
 
 ## Visual Structure
-Each scene uses a consistent visual template centered around a line chart of the S&P 500 index over time. The chart includes:
-- **Clear axes and labels** for easy data interpretation
-- **Color-coded highlight areas** showing the specific event periods
-- **Scene-specific annotations** with callouts pointing to key moments
-- **Interactive data points** with tooltips for detailed information
-- **Progress indicators** showing current position in the narrative
 
-The visual structure ensures viewers can understand the data by providing clear temporal context and highlighting the most important periods. The consistent chart format allows easy comparison between different events, while the annotations guide attention to critical moments in each crisis.
+Each scene follows a consistent visual template that ensures clarity and engagement:
+
+### Scene Template
+- **Header**: Clear scene title with gradient background for visual hierarchy
+- **Description**: Contextual text explaining the scene's purpose
+- **Chart Container**: Dedicated space for D3 visualizations
+- **Legend**: Consistent color coding and labeling
+- **Navigation**: Progress bar and navigation buttons
+
+### Visual Consistency
+- **Color Scheme**: Unified gradient theme (#667eea to #764ba2) across all elements
+- **Typography**: Consistent font family and sizing hierarchy
+- **Spacing**: Uniform padding and margins throughout
+- **Animations**: Smooth transitions between scenes and interactive elements
+
+### Data Visualization Design
+- **Chart Types**: Line chart for trends, pie chart for distributions, multi-line chart for comparisons
+- **Color Coding**: Each data series has a distinct, accessible color
+- **Grid Lines**: Subtle grid lines for easier data reading
+- **Responsive Design**: Charts adapt to different screen sizes
+
+### Focus Mechanisms
+- **Annotations**: Strategic placement of callouts highlighting key insights
+- **Tooltips**: Interactive hover effects providing detailed information
+- **Visual Hierarchy**: Important elements are emphasized through size, color, and positioning
 
 ## Scenes
-The visualization contains three ordered scenes:
 
-1. **The Dot-Com Bubble (1995-2002)** - Shows the rapid rise of internet stocks followed by their dramatic collapse, highlighting the speculative nature of the bubble and its eventual burst.
+### Scene 1: Rising Global Temperatures
+**Purpose**: Establish the baseline problem of climate change
+**Data**: Temperature anomalies from 1880-2023
+**Visualization**: Line chart showing warming trend
+**Key Insights**: Clear upward trend, acceleration in recent decades
+**Annotations**: Industrial Revolution, post-war boom, accelerated warming
 
-2. **The 2008 Financial Crisis** - Demonstrates the housing market collapse and banking crisis that led to the Great Recession, showing the systemic nature of the crisis and its prolonged recovery.
+### Scene 2: Carbon Emissions by Region
+**Purpose**: Show the global distribution of responsibility
+**Data**: CO2 emissions by world region (2023)
+**Visualization**: Pie chart with percentage breakdown
+**Key Insights**: Asia Pacific leads emissions, but all regions contribute
+**Annotations**: Largest emitter, per capita considerations
 
-3. **The COVID-19 Pandemic** - Illustrates the unprecedented market volatility caused by the global pandemic, featuring the fastest crash and recovery in market history.
+### Scene 3: Renewable Energy Growth
+**Purpose**: Present solutions and hope for the future
+**Data**: Renewable energy capacity growth (2010-2023)
+**Visualization**: Multi-line chart showing solar, wind, and hydro growth
+**Key Insights**: Exponential growth in renewable capacity
+**Annotations**: Solar boom, exponential growth phase
 
-The scenes are ordered chronologically to show the evolution of market crises over time, but users can navigate freely between them to compare different events.
+### Scene Ordering Rationale
+1. **Problem Identification**: Temperature data establishes the core issue
+2. **Cause Analysis**: Emissions data explains the source of the problem
+3. **Solution Exploration**: Renewable energy data shows the path forward
+
+This progression follows a logical problem-solution narrative arc that builds understanding systematically.
 
 ## Annotations
-The annotation template uses d3-annotation callout circles with consistent styling:
-- **Red annotations** for the dot-com bubble scene
-- **Orange annotations** for the 2008 crisis scene  
-- **Green annotations** for the COVID-19 scene
 
-Each annotation includes a title and descriptive label, positioned to avoid overlapping with the chart data. The annotations highlight the peak and bottom of each crisis, helping users understand the magnitude of market movements. The consistent template ensures visual coherence while the color coding helps distinguish between different events.
+### Annotation Template
+All annotations follow a consistent visual template:
+- **Background**: Semi-transparent white with blue border
+- **Positioning**: Strategically placed near relevant data points
+- **Typography**: Bold, readable text with consistent sizing
+- **Visual Indicators**: Blue circles with white borders marking annotation points
+- **Arrow Indicators**: Pointing to specific data elements
+
+### Annotation Strategy
+- **Scene 1**: Historical milestones (Industrial Revolution, post-war boom, accelerated warming)
+- **Scene 2**: Regional insights (largest emitter, per capita considerations)
+- **Scene 3**: Growth milestones (solar boom, exponential growth)
+
+### Annotation Consistency
+- **Color Scheme**: Blue (#667eea) for all annotation elements
+- **Positioning**: Annotations appear near relevant data points without overlapping
+- **Content**: Concise, impactful text that reinforces key messages
+- **Timing**: Annotations appear as part of the scene, not requiring user interaction
 
 ## Parameters
-The narrative visualization uses several key parameters to control state:
 
-- **currentScene**: Tracks which scene is currently displayed (0-2)
-- **totalScenes**: Constant defining the number of scenes (3)
-- **data**: Contains the S&P 500 dataset with date and price information
-- **chart**: References the D3 SVG element for updates
-- **annotations**: Manages the d3-annotation instance
+### State Parameters
+```javascript
+const narrativeState = {
+    currentScene: 1,        // Controls which scene is displayed
+    totalScenes: 3,         // Total number of scenes
+    annotations: [],         // Dynamic annotation tracking
+    chartData: {},          // Data storage for each scene
+    sceneConfigs: {}        // Configuration for each scene
+};
+```
 
-These parameters are used in functions like `showScene()`, `updateChartForScene()`, and `addSceneAnnotations()` to control the visualization state and ensure proper scene transitions.
+### Scene Parameters
+Each scene has specific parameters that control its appearance and behavior:
+- **Chart Type**: Line, pie, or multi-line chart
+- **Color Schemes**: Consistent color palettes for data series
+- **Annotation Positions**: Predefined positions for annotations
+- **Data Ranges**: Appropriate scales for each visualization
+
+### Function Parameters
+Key functions use parameters to control scene construction:
+- `showScene(sceneNumber)`: Controls scene visibility and rendering
+- `renderScene(sceneNumber)`: Determines which chart type to render
+- `updateProgressBar()`: Calculates progress based on current scene
+- `updateNavigationButtons()`: Enables/disables navigation based on state
 
 ## Triggers
-The visualization includes several triggers that connect user actions to state changes:
 
-- **Navigation buttons**: Previous/Next buttons trigger `showScene()` with updated scene index
-- **Scene indicators**: Click events on indicator dots trigger direct scene navigation
-- **Data point hover**: Mouse events trigger tooltip display with detailed information
-- **Progress bar**: Automatically updates based on current scene position
+### User Interface Triggers
+1. **Navigation Buttons**: "Previous" and "Next" buttons trigger scene changes
+2. **Keyboard Navigation**: Arrow keys and spacebar trigger navigation
+3. **Progress Bar**: Visual indicator of current position in narrative
 
-The triggers provide clear affordances through:
-- **Button styling** that changes based on availability (disabled state)
-- **Visual feedback** on hover with button animations
-- **Progress indicators** showing current position
-- **Active state indicators** for scene navigation
-- **Tooltip instructions** that appear on data point interaction
+### Event Listeners
+```javascript
+// Button click triggers
+onclick="previousScene()"  // Moves to previous scene
+onclick="nextScene()"      // Moves to next scene
 
-These triggers ensure users understand their navigation options and can easily explore the narrative at their own pace while maintaining the guided structure of the visualization. 
+// Keyboard triggers
+keydown event listener for arrow keys and spacebar
+
+// Mouse interaction triggers
+mouseover/mouseout events for tooltip display
+```
+
+### State Change Triggers
+- **Scene Transitions**: Update `narrativeState.currentScene`
+- **Button States**: Enable/disable based on current scene
+- **Progress Updates**: Recalculate progress bar width
+- **Chart Rendering**: Clear and redraw charts for new scenes
+
+### Affordances
+- **Visual Feedback**: Buttons change appearance on hover and when disabled
+- **Progress Indication**: Progress bar shows narrative completion
+- **Interactive Elements**: Data points highlight on hover
+- **Navigation Cues**: Clear button labels and keyboard shortcuts
+- **Tooltip Hints**: Hover effects indicate interactive elements
+
+### User Communication
+- **Clear Navigation**: Prominent buttons with intuitive labels
+- **Progress Tracking**: Visual progress bar shows narrative position
+- **Interactive Feedback**: Hover effects and tooltips provide additional information
+- **Keyboard Support**: Arrow key navigation for accessibility
+- **Visual Consistency**: Unified design language across all elements
+
+This narrative visualization successfully implements all required elements while creating an engaging, educational experience that tells a compelling story about climate change through data visualization. 
