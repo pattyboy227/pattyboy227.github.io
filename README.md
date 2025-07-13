@@ -1,57 +1,91 @@
-# S&P 500: Market Events & Their Impact
+# Global Renewable Energy Revolution: Narrative Visualization
 
 ## Overview
-This narrative visualization explores how three major economic events shaped the S&P 500 index over the past three decades. The project uses D3.js to create an interactive slideshow that guides users through the dot-com bubble, the 2008 financial crisis, and the COVID-19 pandemic.
+This project presents an interactive narrative visualization exploring global renewable energy adoption using D3.js. The visualization follows a **martini glass structure**, guiding users through a carefully crafted story about clean energy transformation before allowing exploration.
 
-## Features
+## Project Structure
+- **index.html**: Main HTML file with responsive design and modern UI
+- **narrative.js**: Core JavaScript implementation with D3.js visualizations
+- **README.md**: Project documentation
 
-### Interactive Slideshow Structure
-- **Scene 1**: The Dot-Com Bubble (1995-2002) - Explores the rapid rise and dramatic fall of internet stocks
-- **Scene 2**: The 2008 Financial Crisis - Examines the housing market collapse and banking crisis
-- **Scene 3**: The COVID-19 Pandemic - Shows the unprecedented market volatility and recovery
+## Narrative Structure: Martini Glass
+The visualization follows a **martini glass structure** where:
+1. **Directed Story**: Users are guided through three sequential scenes
+2. **Controlled Exploration**: Each scene highlights specific aspects of the data
+3. **Final Freedom**: After the narrative, users can explore the data freely
 
-### Interactive Elements
-- **Navigation**: Previous/Next buttons and scene indicators
-- **Progress Bar**: Visual indication of current position in the narrative
-- **Tooltips**: Hover over data points to see detailed information
-- **Annotations**: Scene-specific callouts highlighting key events
-- **Highlighted Areas**: Color-coded regions showing event periods
+## Three Scenes
 
-### Technical Implementation
-- **D3.js**: Core visualization library
-- **d3-annotation**: For callout annotations
+### Scene 1: The Global Picture
+- **Chart Type**: Bar chart showing total renewable capacity by country
+- **Message**: Introduction to global renewable energy leaders
+- **Annotations**: Highlight China and United States as top performers
+
+### Scene 2: Solar vs Wind Energy  
+- **Chart Type**: Scatter plot comparing solar vs wind capacity
+- **Message**: Different countries prioritize different renewable technologies
+- **Annotations**: Show China's dominance and Germany's solar focus
+
+### Scene 3: Energy Mix Diversity
+- **Chart Type**: Stacked bar chart showing energy source breakdown
+- **Message**: Countries balance multiple renewable technologies
+- **Annotations**: Emphasize Brazil's diversity and hydro power importance
+
+## Technical Implementation
+
+### Parameters (State Variables)
+- `currentScene`: Controls which scene is displayed (0-2)
+- `highlightedCountry`: Tracks user-selected country for exploration
+- `selectedYear`: Data year (2020)
+- `showAnnotations`: Controls annotation visibility
+- `animationSpeed`: Controls transition timing
+
+### Triggers (User Interactions)
+- **Navigation Buttons**: Previous/Next scene progression
+- **Keyboard Controls**: Arrow keys and spacebar for navigation
+- **Mouse Interactions**: Hover tooltips for detailed information
+- **Progress Bar**: Visual indication of narrative progress
+
+### Annotations
+- **Template**: Consistent styling with colored borders and positioning
+- **Purpose**: Highlight key insights and guide user attention
+- **Timing**: Appear after chart animations complete
+
+### Visual Structure
 - **Responsive Design**: Works on desktop and mobile devices
-- **Smooth Transitions**: Animated scene transitions and progress updates
+- **Modern UI**: Gradient backgrounds, smooth animations, hover effects
+- **Accessibility**: Keyboard navigation and clear visual hierarchy
+- **Color Coding**: Consistent color scheme for different energy types
 
-## Narrative Structure
-This visualization follows an **Interactive Slideshow** structure, allowing users to:
-- Navigate between scenes in any order
-- Explore data points through tooltips
-- Understand the progression of market events
-- Compare the impact of different crises
+## Data Sources
+The visualization uses sample renewable energy capacity data (2020) including:
+- Solar power capacity (GW)
+- Wind power capacity (GW) 
+- Hydroelectric capacity (GW)
+- Biomass capacity (GW)
 
-## Data
-The visualization uses simulated S&P 500 data that incorporates realistic patterns including:
-- Long-term growth trends
-- Seasonal variations
-- Event-specific impacts (dot-com bubble, 2008 crisis, COVID-19)
-- Market volatility patterns
+## Deployment
+This project is designed for GitHub Pages deployment:
+1. Push code to GitHub repository
+2. Enable GitHub Pages in repository settings
+3. Access via `https://[username].github.io/[repository-name]`
 
-## Usage
-1. Navigate through scenes using the Previous/Next buttons
-2. Click on scene indicators to jump to specific scenes
-3. Hover over data points to see detailed information
-4. Observe the highlighted areas and annotations for each event
+## Dependencies
+- **D3.js v7**: Core visualization library
+- **d3-annotation**: Annotation functionality
+- **No other external libraries** (as per assignment requirements)
 
-## Files
-- `index.html`: Main HTML structure and styling
-- `script.js`: D3.js visualization logic and scene management
-- `README.md`: Project documentation
+## Browser Compatibility
+- Modern browsers with ES6+ support
+- Chrome, Firefox, Safari, Edge recommended
+- Mobile-responsive design
 
-## Requirements Met
-- ✅ Uses D3.js (no high-level tools)
-- ✅ Implements scenes, annotations, parameters, and triggers
-- ✅ Follows interactive slideshow narrative structure
-- ✅ Three distinct scenes highlighting different aspects
-- ✅ Consistent visual template across scenes
-- ✅ User interaction through navigation and tooltips 
+## Future Enhancements
+- Real-time data integration
+- Additional renewable energy sources
+- Time-series analysis
+- Geographic mapping integration
+
+---
+
+*This narrative visualization demonstrates effective storytelling through data, guiding users through a compelling story about global renewable energy adoption while maintaining the flexibility for exploration and discovery.* 
