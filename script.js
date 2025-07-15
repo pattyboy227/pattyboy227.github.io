@@ -26,7 +26,7 @@ const scenes = [
     name: "Crisis (Oct 2007 - Feb 2009)",
     description: "As Freddie Mac and Fannie Mae were nationalized and Congress squabbled over Wall Street bailouts, bank runs continued and the S&P 500 tumbled in panic.",
     start: new Date(2007, 9, 31), // Oct 2007
-    end: new Date(2009, 1, 28),   // Feb 2009
+    end: new Date(2009, 1, 27),   // Feb 2009
     annotations: [
       {
         date: new Date(2007, 11, 31), // Dec 2007
@@ -46,7 +46,7 @@ const scenes = [
     id: 2,
     name: "Recovery (Feb 2009 - Jun 2013)",
     description: "The new Obama administration supported economic stimulus, quantitative easing, and regulatory reforms. Invigorated, the S&P 500 began a gradual recovery.",
-    start: new Date(2009, 1, 28), // Feb 2009
+    start: new Date(2009, 1, 27), // Feb 2009
     end: new Date(2013, 5, 30),   // June 2013
     annotations: [
       {
@@ -118,16 +118,8 @@ function renderScene(data, sceneIdx) {
     .range([height, 0]);
 
   // X axis (years only)
-  // Find the first data point for each year in the scene
-  const yearTicks = [];
-  let lastYear = null;
-  for (const d of sceneData) {
-    const yVal = d.date.getFullYear();
-    if (yVal !== lastYear) {
-      yearTicks.push(d.date);
-      lastYear = yVal;
-    }
-  }
+  // Only use January data points for year ticks
+  const yearTicks = sceneData.filter(d => d.date.getMonth() === 0).map(d => d.date);
   svg.append("g")
     .attr("transform", `translate(0,${height})`)
     .call(d3.axisBottom(x)
